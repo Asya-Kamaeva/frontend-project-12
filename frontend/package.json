@@ -4,6 +4,9 @@
   "main": "./src/index.js",
   "private": true,
   "proxy": "http://localhost:5000",
+  "engines": {
+    "node": "14.x"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
     "@testing-library/jest-dom": "^5.16.5",
@@ -18,9 +21,6 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
-  },
-  "engines": {
-    "node": "14.15.4"
   },
   "scripts": {
     "start": "react-scripts start",

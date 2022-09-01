@@ -4,6 +4,9 @@
   "description": "[![Actions Status](https://github.com/Asya-Kamaeva/frontend-project-12/workflows/hexlet-check/badge.svg)](https://github.com/Asya-Kamaeva/frontend-project-12/actions)",
   "main": "index.js",
   "type": "module",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "build": "npm run build --prefix frontend",
     "start": "start-server -s ./frontend/build",
