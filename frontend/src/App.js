@@ -6,8 +6,8 @@ import {
   Link,
   Routes,
 } from 'react-router-dom';
-import Login from './components/Login.jsx';
-import NotFound from './components/NotFound.jsx';
+import Login from './components/LoginPage.jsx';
+import NotFound from './components/NotFoundPage.jsx';
 
 function App() {
   return (
