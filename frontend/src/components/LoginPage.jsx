@@ -63,7 +63,7 @@ const Login = () => {
                       <label className="form-label" htmlFor="password">Пароль</label>
                     </div>
                     <button type="submit" className="w-100 mb-3 btn btn-outline-primary">Войти</button>
-                    {authFailed ? <div className="alert alert-danger">ошибка sdfvsdfv</div> : null}
+                    {authFailed ? <div className="alert alert-danger">ошибка бла бла бла</div> : null}
                   </Form>
                 )}
               </Formik>
