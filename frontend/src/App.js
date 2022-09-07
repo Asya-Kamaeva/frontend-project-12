@@ -18,8 +18,6 @@ const PrivateRoute = () => {
   return auth.user.username ? <Home /> : <Navigate replace to="/login" />;
 };
 function App() {
-  const token = localStorage.getItem('user');
-  console.log('!!!', token);
   return (
     <AuthProvider>
       <Router>
