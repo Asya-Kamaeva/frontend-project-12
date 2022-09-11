@@ -1,7 +1,5 @@
-import { useContext } from 'react';
 import axios from 'axios';
 import { createSlice, createEntityAdapter, createAsyncThunk } from '@reduxjs/toolkit';
-import { AuthContext } from '../contexts/index.js';
 
 const channelsAdapter = createEntityAdapter();
 const initialState = channelsAdapter.getInitialState({
@@ -10,10 +8,8 @@ const initialState = channelsAdapter.getInitialState({
 
 export const fetchData = createAsyncThunk(
   'fetchData',
-  async () => {
-    const auth = useContext(AuthContext);
-    console.log('!fetxh!', auth.getAuthHeader());
-    const response = await axios.get('/api/v1/data', { headers: auth.getAuthHeader() });
+  async (header) => {
+    const response = await axios.get('/api/v1/data', { headers: header });
     return response.data;
   },
 );

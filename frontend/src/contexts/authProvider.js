@@ -6,7 +6,6 @@ const AuthProvider = ({ children }) => {
   const currentUser = JSON.parse(localStorage.getItem('user'));
   const [user, setUser] = useState(currentUser ? { username: currentUser.username } : null);
   const logIn = (data) => {
-    console.log('!!!login!', data);
     localStorage.setItem('user', JSON.stringify(data));
     setUser({ username: data.username, isAuth: true, token: data.token });
   };

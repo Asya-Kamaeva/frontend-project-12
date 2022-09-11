@@ -1,14 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchData } from '../slices/channelsSlice.js';
+import { AuthContext } from '../contexts/index.js';
 import Channels from './Channels.jsx';
 import Messages from './Messages.jsx';
 
 const Home = () => {
   const dispatch = useDispatch();
+  const auth = useContext(AuthContext);
+  const header = auth.getAuthHeader();
 
   useEffect(() => {
-    dispatch(fetchData());
+    dispatch(fetchData(header));
   }, [dispatch]);
 
   return (
