@@ -1,8 +1,10 @@
 export default {
   translation: {
+    hexlet: 'Hexlet Chat',
     login: {
       name: 'Ваше имя',
       enter: 'Войти',
+      exit: 'Выйти',
       password: 'Пароль',
       question: 'Нет аккаунта? ',
       signup: 'Регистрация',

@@ -42,6 +42,7 @@ const Login = () => {
                 onSubmit={ async (values, { resetForm }) => {
                   try {
                     const response = await axios.post(routes.loginPath(), values);
+                    console.log('!!', response.data);
                     auth.logIn(response.data);
                     resetForm();
                     navigate(routes.root);
