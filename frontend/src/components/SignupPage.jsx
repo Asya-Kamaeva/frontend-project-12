@@ -14,6 +14,7 @@ import {
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 import { AuthContext } from '../contexts/index.js';
 import routes from '../routes.js';
 import logo from '../image/avatar.jpg';
@@ -67,6 +68,7 @@ const Signup = () => {
                     if (e.response.status === 409) {
                       setSignupFailed(true);
                     } else {
+                      toast.error(t('errors.network'));
                       throw new Error(t('errors.network'));
                     }
                   }

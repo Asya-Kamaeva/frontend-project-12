@@ -43,6 +43,7 @@ const channelsSlice = createSlice({
         state.currentChannelId = currentChannelId;
       })
       .addCase(fetchData.rejected, (state, action) => {
+        console.log('!!!!', state);
         console.log('!!!error!', action.error);
       });
   },

@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import i18n from 'i18next';
+import { ToastContainer } from 'react-toastify';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
 import Login from './components/LoginPage.jsx';
 import NotFound from './components/NotFoundPage.jsx';
@@ -42,17 +43,16 @@ const App = (socket) => {
           <AuthProvider>
             <I18nextProvider i18n={i18n}>
               <Router>
-                <div className="h-100" id="chat">
-                  <div className="d-flex flex-column h-100">
-                    <Header />
-                    <Routes>
-                      <Route exact path={routes.login} element={<Login />} />
-                      <Route path={routes.root} element={<PrivateRoute />} />
-                      <Route path={routes.any} element={<NotFound />} />
-                      <Route path={routes.signup} element={<Signup />} />
-                    </Routes>
-                  </div>
+                <div className="d-flex flex-column h-100">
+                  <Header />
+                  <Routes>
+                    <Route exact path={routes.login} element={<Login />} />
+                    <Route path={routes.root} element={<PrivateRoute />} />
+                    <Route path={routes.any} element={<NotFound />} />
+                    <Route path={routes.signup} element={<Signup />} />
+                  </Routes>
                 </div>
+                <ToastContainer />
               </Router>
             </I18nextProvider>
           </AuthProvider>

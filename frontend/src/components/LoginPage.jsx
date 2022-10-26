@@ -3,6 +3,7 @@ import { Formik, Field, Form } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
+import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/index.js';
 import routes from '../routes.js';
@@ -42,12 +43,12 @@ const Login = () => {
                 onSubmit={ async (values, { resetForm }) => {
                   try {
                     const response = await axios.post(routes.loginPath(), values);
-                    console.log('!!', response.data);
                     auth.logIn(response.data);
                     resetForm();
                     navigate(routes.root);
                   } catch (e) {
                     setAuthFailed(true);
+                    toast.error(t('toast.err'));
                   }
                 }}
               >
