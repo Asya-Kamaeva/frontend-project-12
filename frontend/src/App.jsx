@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import i18n from 'i18next';
+import leoProfanity from 'leo-profanity';
 import { ToastContainer } from 'react-toastify';
 import { I18nextProvider, initReactI18next } from 'react-i18next';
 import Login from './components/LoginPage.jsx';
@@ -35,6 +36,10 @@ const App = (socket) => {
       lng: 'ru',
     });
 
+  leoProfanity.clearList();
+  leoProfanity.add(leoProfanity.getDictionary('en'));
+  leoProfanity.add(leoProfanity.getDictionary('ru'));
+
   const chatApi = buildChatApi(socket);
   return (
     <React.StrictMode>
@@ -52,7 +57,7 @@ const App = (socket) => {
                     <Route path={routes.signup} element={<Signup />} />
                   </Routes>
                 </div>
-                <ToastContainer />
+                <ToastContainer autoClose={3000}/>
               </Router>
             </I18nextProvider>
           </AuthProvider>
