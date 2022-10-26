@@ -60,14 +60,14 @@ const Login = () => {
                       {errors.username && touched.username ? (
                         <div className="alert alert-warning">{errors.username}</div>
                       ) : null}
-                      <label htmlFor="username">{t('login.name')}</label>
+                      <Form.Label htmlFor="username">{t('login.name')}</Form.Label>
                     </div>
                     <div className="form-floating mb-4">
                       <Field name="password" placeholder="Пароль" className="form-control" />
                       {errors.password && touched.password ? (
                         <div className="alert alert-warning">{errors.password}</div>
                       ) : null}
-                      <label className="form-label" htmlFor="password">{t('login.password')}</label>
+                      <Form.Label className="form-label" htmlFor="password">{t('login.password')}</Form.Label>
                     </div>
                     <button type="submit" className="w-100 mb-3 btn btn-outline-primary">{t('login.enter')}</button>
                     {authFailed ? <div className="alert alert-danger">{t('errors.auth')}</div> : null}

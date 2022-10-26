@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useContext } from 'react';
+import { Provider as RollbarProvider, ErrorBoundary } from '@rollbar/react';
 import {
   BrowserRouter as Router,
   Route,
@@ -23,6 +24,15 @@ import store from './slices/index.js';
 import ru from './locales/ru.js';
 import routes from './routes.js';
 
+const rollbarConfig = {
+  accessToken: process.env.REACT_APP_ACCESS_TOKEN,
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+  payload: {
+    environment: process.env.NODE_ENV,
+  },
+};
+
 const PrivateRoute = () => {
   const auth = useContext(AuthContext);
   return auth.user ? <Home /> : <Navigate replace to={routes.login} />;
@@ -42,28 +52,32 @@ const App = (socket) => {
 
   const chatApi = buildChatApi(socket);
   return (
-    <React.StrictMode>
-      <Provider store={store}>
-        <ApiContext.Provider value={chatApi}>
-          <AuthProvider>
-            <I18nextProvider i18n={i18n}>
-              <Router>
-                <div className="d-flex flex-column h-100">
-                  <Header />
-                  <Routes>
-                    <Route exact path={routes.login} element={<Login />} />
-                    <Route path={routes.root} element={<PrivateRoute />} />
-                    <Route path={routes.any} element={<NotFound />} />
-                    <Route path={routes.signup} element={<Signup />} />
-                  </Routes>
-                </div>
-                <ToastContainer autoClose={3000}/>
-              </Router>
-            </I18nextProvider>
-          </AuthProvider>
-        </ApiContext.Provider>
-      </Provider>
-    </React.StrictMode>
+    <RollbarProvider config={rollbarConfig}>
+      <ErrorBoundary>
+        <React.StrictMode>
+          <Provider store={store}>
+            <ApiContext.Provider value={chatApi}>
+              <AuthProvider>
+                <I18nextProvider i18n={i18n}>
+                  <Router>
+                    <div className="d-flex flex-column h-100">
+                      <Header />
+                      <Routes>
+                        <Route exact path={routes.login} element={<Login />} />
+                        <Route path={routes.root} element={<PrivateRoute />} />
+                        <Route path={routes.any} element={<NotFound />} />
+                        <Route path={routes.signup} element={<Signup />} />
+                      </Routes>
+                    </div>
+                    <ToastContainer autoClose={3000}/>
+                  </Router>
+                </I18nextProvider>
+              </AuthProvider>
+            </ApiContext.Provider>
+          </Provider>
+        </React.StrictMode>
+      </ErrorBoundary>
+    </RollbarProvider>
   );
 };
 
