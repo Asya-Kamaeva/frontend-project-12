@@ -16,11 +16,19 @@ const Messagess = () => {
   const activeChanel = useSelector((state) => channelsSelectors
     .selectById(state, currentChannelId));
   const currentMessages = messages.filter((m) => m.chanelId === currentChannelId);
+
   const chat = useContext(ApiContext);
   const auth = useContext(AuthContext);
 
   const inputRef = useRef();
+  const lastMessageRef = useRef();
+
   useEffect(() => inputRef.current.focus());
+  useEffect(() => {
+    lastMessageRef.current.scrollIntoView({
+      behavior: 'smooth',
+    });
+  }, [currentMessages]);
 
   const validationSchema = yup.object().shape({
     body: yup.string()
@@ -41,6 +49,7 @@ const Messagess = () => {
           {currentMessages.map((m) => (
             <div className="text-break mb-2" key={m.id}><b>{m.username}</b>: {m.body}</div>
           ))}
+          <span ref={lastMessageRef} />
         </div>
         <div className="mt-auto px-5 py-3">
           <Formik
