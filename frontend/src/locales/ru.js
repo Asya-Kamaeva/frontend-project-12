@@ -27,7 +27,7 @@ export default {
     },
     channels: {
       channels: 'Каналы',
-      manage: 'Управление каналами',
+      manage: 'Управление каналом',
       delete: 'Удалить',
       rename: 'Переименовать',
     },
