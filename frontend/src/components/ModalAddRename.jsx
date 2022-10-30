@@ -70,6 +70,7 @@ const ModalForm = () => {
                   value={values.name}
                   ref={inputRef}
                 />
+                <Form.Label htmlFor='name' className='visually-hidden'>{t('modal.name')}</Form.Label>
                 {errors.name ? (
                   <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback>
                 ) : null}

@@ -55,6 +55,7 @@ export default {
     },
     modal: {
       add: 'Добавить канал',
+      name: 'Имя канала',
       rename: 'Переименовать канал',
       removing: 'Удалить канал',
       remove: 'Удалить',
