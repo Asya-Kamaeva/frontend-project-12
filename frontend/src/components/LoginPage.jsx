@@ -54,13 +54,13 @@ const Login = () => {
                 }}
               >
                 {({
-                  errors, handleChange, handleSubmit, values, isSubmitting,
+                  handleChange, handleSubmit, values, isSubmitting,
                 }) => (
                   <Form onSubmit={handleSubmit} className='col-12 col-md-6 mt-3 mt-mb-0'>
                     <h1 className='text-center mb-4'>{t('login.enter')}</h1>
                     <Form.Group className='form-floating mb-3'>
                       <Form.Control
-                        isInvalid={errors.username}
+                        isInvalid={authFailed}
                         onChange={handleChange}
                         name='username'
                         value={values.username}
@@ -69,12 +69,11 @@ const Login = () => {
                         disabled={isSubmitting}
                       />
                       <Form.Label htmlFor='username'>{t('login.name')}</Form.Label>
-                      <Form.Control.Feedback type='invalid' tooltip placement='right'>{errors.username}</Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group className='form-floating mb-4'>
                       <Form.Control
-                        isInvalid={errors.password}
                         onChange={handleChange}
+                        isInvalid={authFailed}
                         name='password'
                         placeholder={t('login.password')}
                         value={values.password}
@@ -82,10 +81,9 @@ const Login = () => {
                         disabled={isSubmitting}
                       />
                       <Form.Label className='form-label' htmlFor='password'>{t('login.password')}</Form.Label>
-                      <Form.Control.Feedback type='invalid' tooltip placement='right'>{errors.password}</Form.Control.Feedback>
+                      <Form.Control.Feedback type='invalid'>{t('errors.auth')}</Form.Control.Feedback>
                     </Form.Group>
                     <button type='submit' disabled={isSubmitting} className='w-100 mb-3 btn btn-outline-primary'>{t('login.enter')}</button>
-                    {authFailed ? <div className='alert alert-danger'>{t('errors.auth')}</div> : null}
                   </Form>
                 )}
               </Formik>
