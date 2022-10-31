@@ -44,13 +44,13 @@ const ModalForm = () => {
   return (
     <Modal show centered>
       <Modal.Header closeButton onClick={closeModal}>
-        <Modal.Title className='h4'>{title}</Modal.Title>
+        <Modal.Title className="h4">{title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Formik
           initialValues={{ name: '' }}
           validationSchema={validationSchema}
-          onSubmit={ ({ name }) => {
+          onSubmit={({ name }) => {
             const cleanName = leoProfanity.clean(name);
             action(cleanName);
             closeModal();
@@ -70,13 +70,13 @@ const ModalForm = () => {
                   value={values.name}
                   ref={inputRef}
                 />
-                <Form.Label htmlFor='name' className='visually-hidden'>{t('modal.name')}</Form.Label>
+                <Form.Label htmlFor="name" className="visually-hidden">{t('modal.name')}</Form.Label>
                 {errors.name ? (
                   <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback>
                 ) : null}
-                <div className='d-flex justify-content-end'>
-                  <Button onClick={closeModal} type='button' className='me-2' variant="secondary">{t('modal.cancel')}</Button>
-                  <Button type='submit'>{t('modal.send')}</Button>
+                <div className="d-flex justify-content-end">
+                  <Button onClick={closeModal} type="button" className="me-2" variant="secondary">{t('modal.cancel')}</Button>
+                  <Button type="submit">{t('modal.send')}</Button>
                 </div>
               </div>
 

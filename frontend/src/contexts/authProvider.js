@@ -29,7 +29,8 @@ const AuthProvider = ({ children }) => {
       logIn,
       getAuthHeader,
       logOut,
-    }}>
+    }}
+    >
       { children }
     </AuthContext.Provider>
   );

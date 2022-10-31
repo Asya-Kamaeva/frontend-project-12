@@ -69,7 +69,7 @@ const App = (socket) => {
                         <Route path={routes.signup} element={<Signup />} />
                       </Routes>
                     </div>
-                    <ToastContainer autoClose={3000}/>
+                    <ToastContainer autoClose={3000} />
                   </Router>
                 </I18nextProvider>
               </AuthProvider>

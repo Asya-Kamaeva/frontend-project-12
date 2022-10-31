@@ -27,13 +27,13 @@ const Login = () => {
   });
 
   return (
-    <div className='container-fluid h-100'>
-      <div className='row justify-content-center align-content-center h-100'>
-        <div className='col-12 col-md-8 col-xxl-6'>
-          <div className='card shadow-sm'>
-            <div className='card-body row p-5'>
-              <div className='col-12 col-md-6 d-flex align-items-center justify-content-center'>
-                <img src={logo} className='rounded-circle' alt={t('login.enter')} />
+    <div className="container-fluid h-100">
+      <div className="row justify-content-center align-content-center h-100">
+        <div className="col-12 col-md-8 col-xxl-6">
+          <div className="card shadow-sm">
+            <div className="card-body row p-5">
+              <div className="col-12 col-md-6 d-flex align-items-center justify-content-center">
+                <img src={logo} className="rounded-circle" alt={t('login.enter')} />
               </div>
               <Formik
                 initialValues={{
@@ -41,7 +41,7 @@ const Login = () => {
                   password: '',
                 }}
                 validationSchema={loginSchema}
-                onSubmit={ async (values, { resetForm }) => {
+                onSubmit={async (values, { resetForm }) => {
                   try {
                     const response = await axios.post(routes.loginPath(), values);
                     auth.logIn(response.data);
@@ -56,42 +56,42 @@ const Login = () => {
                 {({
                   handleChange, handleSubmit, values, isSubmitting,
                 }) => (
-                  <Form onSubmit={handleSubmit} className='col-12 col-md-6 mt-3 mt-mb-0'>
-                    <h1 className='text-center mb-4'>{t('login.enter')}</h1>
-                    <Form.Group className='form-floating mb-3'>
+                  <Form onSubmit={handleSubmit} className="col-12 col-md-6 mt-3 mt-mb-0">
+                    <h1 className="text-center mb-4">{t('login.enter')}</h1>
+                    <Form.Group className="form-floating mb-3">
                       <Form.Control
                         isInvalid={authFailed}
                         onChange={handleChange}
-                        name='username'
+                        name="username"
                         value={values.username}
                         placeholder={t('login.name')}
-                        id='username'
+                        id="username"
                         disabled={isSubmitting}
                       />
-                      <Form.Label htmlFor='username'>{t('login.name')}</Form.Label>
+                      <Form.Label htmlFor="username">{t('login.name')}</Form.Label>
                     </Form.Group>
-                    <Form.Group className='form-floating mb-4'>
+                    <Form.Group className="form-floating mb-4">
                       <Form.Control
                         onChange={handleChange}
                         isInvalid={authFailed}
-                        name='password'
+                        name="password"
                         placeholder={t('login.password')}
                         value={values.password}
-                        id='password'
+                        id="password"
                         disabled={isSubmitting}
                       />
-                      <Form.Label className='form-label' htmlFor='password'>{t('login.password')}</Form.Label>
-                      <Form.Control.Feedback type='invalid'>{t('errors.auth')}</Form.Control.Feedback>
+                      <Form.Label className="form-label" htmlFor="password">{t('login.password')}</Form.Label>
+                      <Form.Control.Feedback type="invalid">{t('errors.auth')}</Form.Control.Feedback>
                     </Form.Group>
-                    <button type='submit' disabled={isSubmitting} className='w-100 mb-3 btn btn-outline-primary'>{t('login.enter')}</button>
+                    <button type="submit" disabled={isSubmitting} className="w-100 mb-3 btn btn-outline-primary">{t('login.enter')}</button>
                   </Form>
                 )}
               </Formik>
             </div>
-            <div className='card-footer p-4'>
-              <div className='text-center'>
+            <div className="card-footer p-4">
+              <div className="text-center">
                 <span>{t('login.question')}</span>
-                <a href='/signup'>{t('login.signup')}</a>
+                <a href="/signup">{t('login.signup')}</a>
               </div>
             </div>
           </div>
