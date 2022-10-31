@@ -41,8 +41,11 @@ const Messagess = () => {
       <div className="d-flex flex-column h-100">
         <div className="bg-light mb-4 p-3 shadow-sm small">
           <p className="m-0">
-            <b>#{' '}
-            {activeChanel?.name ?? ''}</b>
+            <b>
+              #
+              {' '}
+              {activeChanel?.name ?? ''}
+            </b>
           </p>
           <span className="text-muted">
             {t('messages.counter.key', { count: currentMessages.length })}
@@ -51,7 +54,8 @@ const Messagess = () => {
         <div id="messages-box" className="chat-messages overflow-auto px-5 ">
           {currentMessages.map((m) => (
             <div className="text-break mb-2" key={m.id}>
-              <b>{m.username}</b>:
+              <b>{m.username}</b>
+              :
               {' '}
               {m.body}
             </div>
@@ -64,7 +68,7 @@ const Messagess = () => {
               body: '',
             }}
             validationSchema={validationSchema}
-            onSubmit={ (values, { resetForm }) => {
+            onSubmit={(values, { resetForm }) => {
               const { body } = values;
               const data = {
                 body: leoProfanity.clean(body),
