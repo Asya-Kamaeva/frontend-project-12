@@ -39,8 +39,8 @@ const channelsSlice = createSlice({
       }
     }),
     updateChannel: channelsAdapter.updateOne,
-    setCurrentId: (state, actions) => {
-      state.currentChannelId = actions.payload;
+    setCurrentId: (state, action) => {
+      state.currentChannelId = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -48,6 +48,7 @@ const channelsSlice = createSlice({
       .addCase(fetchData.fulfilled, (state, action) => {
         const { channels, currentChannelId } = action.payload;
         channelsAdapter.setAll(state, channels);
+        console.log('!!!', currentChannelId);
         state.currentChannelId = currentChannelId;
       })
       .addCase(fetchData.rejected, (state, action) => {

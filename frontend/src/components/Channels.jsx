@@ -2,7 +2,9 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
-import { Col, Button, Dropdown } from 'react-bootstrap';
+import {
+  Col, Button, Dropdown, Nav,
+} from 'react-bootstrap';
 import { selectors, actions as channelsActions } from '../slices/channelsSlice.js';
 import { actions as modalActions } from '../slices/modalSlice.js';
 
@@ -12,12 +14,14 @@ const Channels = () => {
   const { currentChannelId } = useSelector((state) => state.channels);
   const dispatch = useDispatch();
 
-  const handleClick = (id) => () => dispatch(channelsActions.setCurrentId(id));
+  const handleClick = (id) => () => {
+    dispatch(channelsActions.setCurrentId(id));
+  };
   const showModal = (type, channel) => () => {
     dispatch(modalActions.openModal({ type, channel: channel || null }));
   };
   const staticBtn = (channel, classBtn) => (
-    <button type="button" className={classBtn}>
+    <button type="button" className={classBtn} onClick={handleClick(channel.id)}>
       <span className="me-1">#</span>
       {channel.name}
     </button>
@@ -52,7 +56,7 @@ const Channels = () => {
           <span className="visually-hidden">+</span>
         </Button>
       </div>
-      <ul className="nav flex-column nav-pills nav-fill px-2">
+      <Nav variant="pills" className="flex-column nav-fill px-2" as="ul">
         {channels.map((channel) => {
           const classBtn = cn('w-100', 'rounded-0', 'text-start', 'btn', 'text-truncate', {
             'btn-secondary': channel.id === currentChannelId,
@@ -60,12 +64,12 @@ const Channels = () => {
           const btn = channel.removable
             ? addedBtn(channel, classBtn) : staticBtn(channel, classBtn);
           return (
-            <li className="nav-item w-100" key={channel.id} onClick={handleClick(channel.id)}>
+            <Nav.Item as="li" className="w-100" key={channel.id}>
               {btn}
-            </li>
+            </Nav.Item>
           );
         })}
-      </ul>
+      </Nav>
     </Col>
   );
 };
