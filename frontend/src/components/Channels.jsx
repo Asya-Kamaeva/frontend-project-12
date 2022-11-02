@@ -18,7 +18,7 @@ const Channels = () => {
     dispatch(channelsActions.setCurrentId(id));
   };
   const showModal = (type, channel) => () => {
-    dispatch(modalActions.openModal({ type, channel: channel || null }));
+    dispatch(modalActions.openModal({ type, channel }));
   };
   const staticBtn = (channel, classBtn) => (
     <button type="button" className={classBtn} onClick={handleClick(channel.id)}>

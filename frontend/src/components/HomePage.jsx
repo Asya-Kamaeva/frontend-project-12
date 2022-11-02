@@ -14,7 +14,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(fetchData(header));
-  }, [dispatch, header]);
+  }, []);
   const modalType = useSelector((state) => state.modal.type);
 
   return (

@@ -48,7 +48,6 @@ const channelsSlice = createSlice({
       .addCase(fetchData.fulfilled, (state, action) => {
         const { channels, currentChannelId } = action.payload;
         channelsAdapter.setAll(state, channels);
-        console.log('!!!', currentChannelId);
         state.currentChannelId = currentChannelId;
       })
       .addCase(fetchData.rejected, (state, action) => {
